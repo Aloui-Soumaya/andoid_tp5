@@ -1,4 +1,4 @@
-package com.gl4.tp5mobile.forecast_models
+package com.gl4.tp5mobile.daily
 
 data class City(
     val coord: Coord,

@@ -9,7 +9,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import com.gl4.tp5mobile.ViewModel.WeatherViewModel
 import com.gl4.tp5mobile.databinding.ActivityMainBinding
-import com.gl4.tp5mobile.weather_models.WeatherResponse
+import com.gl4.tp5mobile.weather.WeatherResponse
 
 class MainActivity : AppCompatActivity() {
 

@@ -1,7 +1,6 @@
-package com.gl4.tp5mobile.forecast_models
+package com.gl4.tp5mobile.daily
 
 import com.gl4.tp5mobile.Infos
-import com.gl4.tp5mobile.forecast_models.City
 
 data class ForecastResponse(
     val city: City,

@@ -5,8 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.gl4.tp5mobile.forecast_models.ForecastResponse
-import com.gl4.tp5mobile.weather_models.WeatherResponse
+import com.gl4.tp5mobile.daily.ForecastResponse
 
 class WeatherAdapter(private val forecast : ForecastResponse?) : RecyclerView.Adapter<WeatherAdapter.ViewHolder>() {
 

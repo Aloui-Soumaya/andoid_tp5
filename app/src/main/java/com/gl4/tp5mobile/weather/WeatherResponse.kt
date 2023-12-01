@@ -1,4 +1,4 @@
-package com.gl4.tp5mobile.weather_models
+package com.gl4.tp5mobile.weather
 
 import com.gl4.tp5mobile.Clouds
 

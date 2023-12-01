@@ -1,8 +1,8 @@
 package com.gl4.tp5mobile
 
-import com.gl4.tp5mobile.forecast_models.FeelsLike
-import com.gl4.tp5mobile.forecast_models.Temp
-import com.gl4.tp5mobile.forecast_models.Weather
+import com.gl4.tp5mobile.daily.FeelsLike
+import com.gl4.tp5mobile.daily.Temp
+import com.gl4.tp5mobile.daily.Weather
 
 data class Infos(
     val clouds: Int,

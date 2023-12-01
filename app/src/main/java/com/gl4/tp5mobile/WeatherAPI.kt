@@ -1,6 +1,6 @@
 package com.gl4.tp5mobile
-import com.gl4.tp5mobile.forecast_models.ForecastResponse
-import com.gl4.tp5mobile.weather_models.WeatherResponse
+import com.gl4.tp5mobile.daily.ForecastResponse
+import com.gl4.tp5mobile.weather.WeatherResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.gl4.tp5mobile.RetrofitHelper
-import com.gl4.tp5mobile.weather_models.WeatherResponse
+import com.gl4.tp5mobile.weather.WeatherResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

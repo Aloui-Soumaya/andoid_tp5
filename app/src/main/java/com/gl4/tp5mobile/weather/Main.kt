@@ -1,4 +1,4 @@
-package com.gl4.tp5mobile.weather_models
+package com.gl4.tp5mobile.weather
 
 data class Main(
     val feels_like: Double,
