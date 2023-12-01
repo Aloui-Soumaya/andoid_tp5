@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.forecastButton.setOnClickListener{
-            val intent = Intent(this, WeatherForecastsActivity::class.java)
+            val intent = Intent(this, WeatherDailyActivity::class.java)
             intent.putExtra("newcity", spinner.selectedItem.toString())
             startActivity(intent)
         }

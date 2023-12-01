@@ -8,7 +8,7 @@ import com.gl4.tp5mobile.ViewModel.DailyViewModel
 import com.gl4.tp5mobile.databinding.ActivityWeatherForecastsBinding
 
 
-class WeatherForecastsActivity : AppCompatActivity() {
+class WeatherDailyActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityWeatherForecastsBinding
     var dailyViewModel : DailyViewModel = DailyViewModel(this)
@@ -33,7 +33,7 @@ class WeatherForecastsActivity : AppCompatActivity() {
         }
 
         binding.forecastsRecycler.apply {
-            layoutManager = LinearLayoutManager(this@WeatherForecastsActivity)
+            layoutManager = LinearLayoutManager(this@WeatherDailyActivity)
             adapter = WeatherAdapter(dailyViewModel.forecast.value)
         }
     }
