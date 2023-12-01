@@ -1,7 +1,6 @@
 package com.gl4.tp5mobile.ViewModel
 
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.gl4.tp5mobile.RetrofitHelper
@@ -23,15 +22,12 @@ class DailyViewModel(private val context : Context) {
                     response: Response<ForecastResponse>
                 ) {
                     if(response.isSuccessful){
-                        Log.d("test","--------------------response is successful")
                         forecastResponse.value = response.body()
                         forecast = forecastResponse
                     }
                 }
 
                 override fun onFailure(call: Call<ForecastResponse>, t: Throwable) {
-                    Log.d("test","---------------response is not successful")
-
                 }
             }
         )

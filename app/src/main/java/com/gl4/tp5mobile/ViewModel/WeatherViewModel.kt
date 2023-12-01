@@ -1,5 +1,6 @@
 package com.gl4.tp5mobile.ViewModel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.gl4.tp5mobile.RetrofitHelper
@@ -12,18 +13,16 @@ class WeatherViewModel {
     private val weatherReponse = MutableLiveData<WeatherResponse>()
     var weather : LiveData<WeatherResponse> = weatherReponse
 
-    init {
-        getcityweather("Tunis")
-    }
 
-    private fun getcityweather(newcity : String){
-        RetrofitHelper.retrofitService.getWeather(newcity).enqueue(
+    private fun findWeather(city : String){
+        RetrofitHelper.retrofitService.getWeather(city).enqueue(
             object : Callback<WeatherResponse>{
                 override fun onResponse(
                     call: Call<WeatherResponse>,
                     response: Response<WeatherResponse>
                 ) {
                     if(response.isSuccessful){
+                        Log.d("test","-------------------response is successful")
                         weatherReponse.value = response.body()
                     }
                 }
@@ -36,8 +35,8 @@ class WeatherViewModel {
         )
     }
 
-    fun update(city : String) : String?{
-        getcityweather(city)
+    fun changeCity(city : String) : String?{
+        findWeather(city)
         weather = weatherReponse
         return weatherReponse.value?.name
     }

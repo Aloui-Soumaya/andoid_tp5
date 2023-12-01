@@ -21,12 +21,11 @@ class WeatherForecastsActivity : AppCompatActivity() {
         val newcity=intent.getStringExtra("newcity")
 
         if(newcity != null){
-            Log.d("test","response is successful")
+            Log.d("test","--------------------response is successful")
             dailyViewModel.getDaily(newcity)
         }
 
         dailyViewModel.forecast.observe(this) {
-            Log.d("test","response is successful")
             if (it != null){
                 binding.forecastsRecycler.adapter = WeatherAdapter(dailyViewModel.forecast.value)
                 binding.cityName.text = dailyViewModel.forecast.value!!.city.name

@@ -32,11 +32,12 @@ class MainActivity : AppCompatActivity() {
         val spinner = binding.citiesSpinner
         spinner.adapter = citiesAdapter
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
-                weatherViewModel.update(cities[position])
-                Log.d("test","--------------------response is successful ${cities[position]}")
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                weatherViewModel.changeCity(cities[p2])
                 if(weatherViewModel.weather.value != null){
                     setWeather(weatherViewModel.weather.value!!)
+                    Log.d("test","--------------------response is successful")
+
                 }
             }
 
@@ -52,12 +53,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setWeather(weather : WeatherResponse){
-
         binding.humidityTextView.text = "Humidity : ${weather.main.humidity}"
         binding.pressureTextView.text = "Pressure : ${weather.main.pressure}"
         binding.cityTextView.text = weather.name
         binding.temperatureTextView.text = "${weather.main.temp.toString()}°C"
         binding.weatherTextView.text = weather.weather[0].description
+
 
     }
 }
