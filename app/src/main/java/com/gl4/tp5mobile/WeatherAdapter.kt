@@ -21,7 +21,7 @@ class WeatherAdapter(private val forecast : ForecastResponse?) : RecyclerView.Ad
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.weather_item,parent,false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.weather_i,parent,false)
         return ViewHolder(view)
     }
 
