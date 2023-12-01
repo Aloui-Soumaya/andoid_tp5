@@ -13,11 +13,11 @@ class WeatherViewModel {
     var weather : LiveData<WeatherResponse> = weatherReponse
 
     init {
-        getWeather("Tunis")
+        getcityweather("Tunis")
     }
 
-    private fun getWeather(city : String){
-        RetrofitHelper.retrofitService.getWeather(city).enqueue(
+    private fun getcityweather(newcity : String){
+        RetrofitHelper.retrofitService.getWeather(newcity).enqueue(
             object : Callback<WeatherResponse>{
                 override fun onResponse(
                     call: Call<WeatherResponse>,
@@ -36,8 +36,8 @@ class WeatherViewModel {
         )
     }
 
-    fun changeCity(city : String) : String?{
-        getWeather(city)
+    fun update(city : String) : String?{
+        getcityweather(city)
         weather = weatherReponse
         return weatherReponse.value?.name
     }

@@ -3,6 +3,7 @@ package com.gl4.tp5mobile
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -31,8 +32,9 @@ class MainActivity : AppCompatActivity() {
         val spinner = binding.citiesSpinner
         spinner.adapter = citiesAdapter
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                weatherViewModel.changeCity(cities[p2])
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
+                weatherViewModel.update(cities[position])
+                Log.d("test","--------------------response is successful ${cities[position]}")
                 if(weatherViewModel.weather.value != null){
                     setWeather(weatherViewModel.weather.value!!)
                 }
@@ -50,12 +52,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setWeather(weather : WeatherResponse){
-        binding.cityTextView.text = weather.name
-        binding.temperatureTextView.text = "${weather.main.temp.toString()}°C"
-        //icon
-        binding.weatherTextView.text = weather.weather[0].description
+
         binding.humidityTextView.text = "Humidity : ${weather.main.humidity}"
         binding.pressureTextView.text = "Pressure : ${weather.main.pressure}"
+        binding.cityTextView.text = weather.name
+        binding.temperatureTextView.text = "${weather.main.temp.toString()}°C"
+        binding.weatherTextView.text = weather.weather[0].description
 
     }
 }
