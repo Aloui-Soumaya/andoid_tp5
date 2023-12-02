@@ -24,7 +24,11 @@ class MainActivity : AppCompatActivity() {
 
         weatherViewModel.weather.observe(this) {
             if (it != null)
-                setWeather(it)
+            binding.humidityTextView.text = "Humidity : ${it.main.humidity}"
+            binding.pressureTextView.text = "Pressure : ${it.main.pressure}"
+            binding.cityTextView.text = it.name
+            binding.temperatureTextView.text = "${it.main.temp.toString()}°C"
+            binding.weatherTextView.text = it.weather[0].description
         }
 
         val cities = listOf<String>("Tunis", "Paris", "Rome")
@@ -35,7 +39,12 @@ class MainActivity : AppCompatActivity() {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                 weatherViewModel.changeCity(cities[p2])
                 if(weatherViewModel.weather.value != null){
-                    setWeather(weatherViewModel.weather.value!!)
+                    var weather:WeatherResponse = weatherViewModel.weather.value!!
+                    binding.humidityTextView.text = "Humidity : ${weather.main.humidity}"
+                    binding.pressureTextView.text = "Pressure : ${weather.main.pressure}"
+                    binding.cityTextView.text = weather.name
+                    binding.temperatureTextView.text = "${weather.main.temp.toString()}°C"
+                    binding.weatherTextView.text = weather.weather[0].description
                     Log.d("test","--------------------response is successful")
 
                 }
@@ -44,7 +53,6 @@ class MainActivity : AppCompatActivity() {
             override fun onNothingSelected(p0: AdapterView<*>?) {}
 
         }
-
         binding.forecastButton.setOnClickListener{
             val intent = Intent(this, WeatherDailyActivity::class.java)
             intent.putExtra("newcity", spinner.selectedItem.toString())
@@ -52,13 +60,5 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun setWeather(weather : WeatherResponse){
-        binding.humidityTextView.text = "Humidity : ${weather.main.humidity}"
-        binding.pressureTextView.text = "Pressure : ${weather.main.pressure}"
-        binding.cityTextView.text = weather.name
-        binding.temperatureTextView.text = "${weather.main.temp.toString()}°C"
-        binding.weatherTextView.text = weather.weather[0].description
 
-
-    }
 }

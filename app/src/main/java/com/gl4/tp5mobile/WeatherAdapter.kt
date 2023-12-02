@@ -39,7 +39,6 @@ class WeatherAdapter(private var forecastList: List<Infos>?) :
         return forecastList?.size ?: 0
     }
 
-    // Update data when the list changes
     fun updateData(newList: List<Infos>?) {
         forecastList = newList
         notifyDataSetChanged()

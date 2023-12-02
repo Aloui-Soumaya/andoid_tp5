@@ -5,17 +5,17 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gl4.tp5mobile.ViewModel.DailyViewModel
-import com.gl4.tp5mobile.databinding.ActivityWeatherForecastsBinding
+import com.gl4.tp5mobile.databinding.ActivityDailyWeatherBinding
 
 
 class WeatherDailyActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityWeatherForecastsBinding
+    private lateinit var binding: ActivityDailyWeatherBinding
     var dailyViewModel: DailyViewModel = DailyViewModel(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityWeatherForecastsBinding.inflate(layoutInflater)
+        binding = ActivityDailyWeatherBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val newCity = intent.getStringExtra("newcity")
@@ -33,7 +33,6 @@ class WeatherDailyActivity : AppCompatActivity() {
             if (it != null) {
                 Log.d("mynewmlist", it.list.toString())
                 Log.d("mynewmlistSize", it.list.size.toString())
-
                 adapter.updateData(it.list)
                 binding.cityName.text = it.city.name
             }
