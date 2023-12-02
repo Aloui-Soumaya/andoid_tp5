@@ -22,7 +22,6 @@ class WeatherViewModel {
                     response: Response<WeatherResponse>
                 ) {
                     if(response.isSuccessful){
-                        Log.d("test","-------------------response is successful")
                         weatherReponse.value = response.body()
                     }
                 }

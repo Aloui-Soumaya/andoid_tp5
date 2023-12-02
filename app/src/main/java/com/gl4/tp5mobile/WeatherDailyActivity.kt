@@ -10,31 +10,33 @@ import com.gl4.tp5mobile.databinding.ActivityWeatherForecastsBinding
 
 class WeatherDailyActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityWeatherForecastsBinding
-    var dailyViewModel : DailyViewModel = DailyViewModel(this)
+    private lateinit var binding: ActivityWeatherForecastsBinding
+    var dailyViewModel: DailyViewModel = DailyViewModel(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityWeatherForecastsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val newcity=intent.getStringExtra("newcity")
+        val newCity = intent.getStringExtra("newcity")
 
-        if(newcity != null){
-            Log.d("test","--------------------response is successful")
-            dailyViewModel.getDaily(newcity)
+        if (newCity != null) {
+            Log.d("test", "--------------------response is successful")
+            dailyViewModel.getDaily(newCity)
         }
+
+        val adapter = WeatherAdapter(null) // Pass null initially
+        binding.forecastsRecycler.layoutManager = LinearLayoutManager(this)
+        binding.forecastsRecycler.adapter = adapter
 
         dailyViewModel.forecast.observe(this) {
-            if (it != null){
-                binding.forecastsRecycler.adapter = WeatherAdapter(dailyViewModel.forecast.value)
-                binding.cityName.text = dailyViewModel.forecast.value!!.city.name
-            }
-        }
+            if (it != null) {
+                Log.d("mynewmlist", it.list.toString())
+                Log.d("mynewmlistSize", it.list.size.toString())
 
-        binding.forecastsRecycler.apply {
-            layoutManager = LinearLayoutManager(this@WeatherDailyActivity)
-            adapter = WeatherAdapter(dailyViewModel.forecast.value)
+                adapter.updateData(it.list)
+                binding.cityName.text = it.city.name
+            }
         }
     }
 }

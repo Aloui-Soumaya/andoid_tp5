@@ -1,6 +1,7 @@
 package com.gl4.tp5mobile.ViewModel
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.gl4.tp5mobile.RetrofitHelper
@@ -24,6 +25,8 @@ class DailyViewModel(private val context : Context) {
                     if(response.isSuccessful){
                         forecastResponse.value = response.body()
                         forecast = forecastResponse
+                        Log.d("mylist", forecast.value.toString())
+
                     }
                 }
 
